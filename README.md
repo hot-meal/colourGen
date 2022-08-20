@@ -11,7 +11,7 @@ To use colourGen in a web browser, include colourGen.js on your page.
 To generate a colour:
 
 ```javascript
-var colour = colourGen(); 
+let colour = colourGen(); 
 ```
 
 To use colourGen with node JS:
@@ -21,8 +21,8 @@ npm i -g
 npm link
 ```
 ```javascript
-var colourGen = require('colourGen');
-var colour = colourGen();
+let colourGen = require('colourGen');
+let colour = colourGen();
 ```
 
 ## Options
