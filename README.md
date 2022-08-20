@@ -2,14 +2,16 @@
    <img src="./colourGen.png" width="200" alt="A colour swatch">
 </p>
 
-# ColorGen
+# ColourGen
 
 A script for generating attractive random colors.
 
-To use colourGen in a web browser, include colourGen.js on your page. The generate a colour:
+To use colourGen in a web browser, include colourGen.js on your page. 
+
+To generate a colour:
 
 ```javascript
-var color = colourGen(); // returns a random nice hex colour code
+var color = colourGen(); 
 ```
 
 To use colourGen with node JS:
@@ -19,8 +21,8 @@ npm i -g
 npm link
 ```
 ```javascript
-var colourGen = require('colourGen'); // import
-var color = colourGen(); //returns a random nice hex colour code
+var colourGen = require('colourGen');
+var color = colourGen();
 ```
 
 ## Options
