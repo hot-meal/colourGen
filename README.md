@@ -16,6 +16,7 @@ To use colourGen with node JS:
 
 ```bash
 npm i -g
+npm link
 ```
 ```javascript
 var colourGen = require('colourGen'); // import
