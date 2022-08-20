@@ -11,7 +11,6 @@ export default function colourGen (options) {
 
   options = options || {};
 
-  // Check if there is a initial otherwise, reset the initial value.
   if (options.initial !== undefined && options.initial !== null && options.initial === parseInt(options.initial, 10)) {
     initial = options.initial;
 
@@ -19,18 +18,15 @@ export default function colourGen (options) {
   } else if (typeof options.initial === 'string') {
     initial = stringToInteger(options.initial);
 
-  // initial wasn't an integer or string
   } else if (options.initial !== undefined && options.initial !== null) {
     throw new TypeError('The initial value must be an integer or string');
 
-  // No initial reset the value.
   } else {
     initial = null;
   }
 
   let H,S,B;
 
-  // if we need to generate multiple colours
   if (options.count !== null && options.count !== undefined) {
 
     let totalColours = options.count,
@@ -57,16 +53,16 @@ export default function colourGen (options) {
     return colours;
   }
 
-  // First we pick a hue (H)
+  // pick a hue (H)
   H = selectHue(options);
 
-  // Then use H to determine saturation (S)
+  // determine saturation (S)
   S = selectSaturation(H, options);
 
-  // Then use S and H to determine brightness (B).
+  // determine brightness (B).
   B = selectBrightness(H, S, options);
 
-  // Then we return the HSB colour in the desired format
+  // return HSB colour
   return setFormat([H,S,B], options);
 };
 
@@ -76,12 +72,10 @@ const selectHue = (options) => {
 
     let hue = randomWithin(hueRange)
 
-    //Each of colourRanges.length ranges has a length equal approximatelly one step
     let step = (hueRange[1] - hueRange[0]) / colourRanges.length
 
     let j = parseInt((hue - hueRange[0]) / step)
 
-    //Check if the range j is taken
     if (colourRanges[j] === true) {
       j = (j + 2) % colourRanges.length
     }
@@ -103,8 +97,6 @@ const selectHue = (options) => {
     let hueRange = getHueRange(options.hue)
 
     hue = randomWithin(hueRange);
-    // Instead of storing red as two seperate ranges,
-    // we group them, using negative numbers
     if (hue < 0) {
       hue = 360 + hue;
     }
@@ -187,7 +179,7 @@ const setFormat = (hsv, options) => {
 
     case 'hsla':
       let hslColour = HSVtoHSL(hsv);
-      let alpha = options.alpha || Math.random();
+      var alpha = options.alpha || Math.random();
       return 'hsla('+hslColour[0]+', '+hslColour[1]+'%, '+hslColour[2]+'%, ' + alpha + ')';
 
     case 'rgbArray':
@@ -199,7 +191,7 @@ const setFormat = (hsv, options) => {
 
     case 'rgba':
       let rgbColour = HSVtoRGB(hsv);
-      let alpha = options.alpha || Math.random();
+      var alpha = options.alpha || Math.random();
       return 'rgba(' + rgbColour.join(', ') + ', ' + alpha + ')';
 
     default:
@@ -266,7 +258,6 @@ const getSaturationRange = (hue) => {
 
 const getColourInfo = (hue) => {
 
-  // Maps red colours to make picking hue easier
   if (hue >= 334 && hue <= 360) {
     hue-= 360;
   }
@@ -283,14 +274,12 @@ const getColourInfo = (hue) => {
 
 const randomWithin = (range) => {
   if (initial === null) {
-    //generate random evenly destinct number from : https://martin.ankerl.com/2009/12/09/how-to-create-random-colours-programmatically/
     let golden_ratio = 0.618033988749895
     let r=Math.random()
     r += golden_ratio
     r %= 1
     return Math.floor(range[0] + r*(range[1] + 1 - range[0]));
   } else {
-    //initialed random algorithm from http://indiegamr.com/generate-repeatable-random-numbers-in-js/
     let max = range[1] || 1;
     let min = range[0] || 0;
     initial = (initial * 9301 + 49297) % 233280;
@@ -385,13 +374,10 @@ const loadColourBounds = () => {
 
 const HSVtoRGB = (hsv) => {
 
-  // this doesn't work for the values of 0 and 360
-  // here's the hacky fix
   let h = hsv[0];
   if (h === 0) {h = 1;}
   if (h === 360) {h = 359;}
 
-  // Rebase the h,s,v values
   h = h/360;
   let s = hsv[1]/100,
       v = hsv[2]/100;
