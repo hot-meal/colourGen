@@ -4,14 +4,14 @@
 
 # ColourGen
 
-A script for generating attractive random colors.
+A script for generating attractive random colours.
 
 To use colourGen in a web browser, include colourGen.js on your page. 
 
 To generate a colour:
 
 ```javascript
-var color = colourGen(); 
+var colour = colourGen(); 
 ```
 
 To use colourGen with node JS:
@@ -22,7 +22,7 @@ npm link
 ```
 ```javascript
 var colourGen = require('colourGen');
-var color = colourGen();
+var colour = colourGen();
 ```
 
 ## Options
@@ -31,7 +31,7 @@ An options object to influence the type of colour can be passed.
 
 It has the following properties:
 
-- hue – The hue of the generated colour. You can pass a string representing a color name: ```red```, ```orange```, ```yellow```, ```green```, ```blue```, ```purple```, ```pink``` and ```monochrome```. If you pass a  hexi colour string such as ```#00FFFF```, colourGen will get its hue value.
+- hue – The hue of the generated colour. You can pass a string representing a colour name: ```red```, ```orange```, ```yellow```, ```green```, ```blue```, ```purple```, ```pink``` and ```monochrome```. If you pass a  hexi colour string such as ```#00FFFF```, colourGen will get its hue value.
 
 - luminosity –  the luminosity of the generated colour. A string of either ```bright```, ```light``` or ```dark```.
 
@@ -47,10 +47,10 @@ It has the following properties:
 
 ```javascript
 
-// Returns a hex code for an attractive color
+// Returns a hex code for an attractive colour
 colourGen(); 
 
-// Returns an array of five blue colors
+// Returns an array of five blue colours
 colourGen({
    count: 5,
    hue: 'blue'
