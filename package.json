@@ -1,0 +1,23 @@
+{
+  "name": "colourgen",
+  "version": "0.1.2",
+  "description": "A script for generating attractive random colors",
+  "main": "colourgen.js",
+  "type": "module",
+  "repository": {
+    "type": "git"
+  },
+  "files": [],
+  "keywords": [
+    "random",
+    "color",
+    "generator"
+  ],
+  "author": "hot-meal",
+  "license": "MIT",
+  "spm": {
+    "main": "colourgen.js"
+  },
+  "devDependencies": {},
+  "dependencies": {}
+}
